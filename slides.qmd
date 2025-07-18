@@ -1,0 +1,159 @@
+---
+title: "Building Reactive Data Apps with Shinylive and WebAssembly"
+author: "Christoph Scheuch"
+institute: "Founder of Tidy Intelligence"
+format: 
+  revealjs:
+    transition: fade
+    slide-number: true
+    self-contained: true
+    incremental: false
+    theme: assets/scss/slides.scss
+---
+
+## Problems of Python web apps
+
+- Traditional Python web apps rely on:
+  - Server backend (Flask, Django, FastAPI)
+  - Frontend in JavaScript or Python frameworks (e.g., Streamlit, Dash)
+- Complex state management & data caching
+- Deployment complexity
+
+## Why WebAssembly (Wasm)?
+
+> Wasm a binary instruction format for a stack-based virtual machine
+
+<br>
+
+What does this mean?
+
+- Run compiled code (C/C++/Rust/Python) in the browser
+- Near-native performance
+- No hosted backend server required
+- Enables static deployment (e.g., GitHub Pages, Netlify)
+
+## Enter Shiny & Shinylive
+
+**Shiny**: reactive data apps in pure Python
+    
+- No manual state management (e.g. callback functions)
+- Automatic reactive execution engine
+- Full support for CSS & JavaScrip customization
+
+<br>
+
+**Shinylive**: run Shiny apps entirely in the browser 
+
+## Traditional Shiny deployment
+
+TODO: insert figure from shinylive website
+
+## Shinylive deployment
+
+TODO: insert figure from shinylive website
+
+## Example: a simple data app in Shiny
+
+TODO: include simple app that displays data
+
+```python
+
+```
+
+## Building the Shinylive App
+
+`shinylive export hello-world docs`
+
+```
+docs
+├── app.json          # The application's files serialized to JSON
+├── index.html        # A web page for the application
+├── edit
+│   └── index.html    # A web page for an editor view of the application
+├── shinylive-sw.js   # Shinylive service worker
+└── shinylive         # Shinylive content
+    └── pyodide       # Pyodide files
+```
+
+## Deploying the Shinylive App
+
+TODO: provide simplified example for GitHub pages
+
+## Shipping Data
+
+- Parquet = efficient, compressed columnar data format
+- Can be read in-browser using PyArrow (in Pyodide)
+- Ideal for small to medium-sized datasets & offline-first apps
+- Disadvantage: (potentially public) static data
+
+## Example: Reading Parquet Files
+
+TODO: update example to load parquet data
+
+```python
+
+```
+
+## Optional Backend with FastAPI
+
+- Offload compute or storage tasks to dedicated server
+- Handle authentication, remote database access, heavy lifting
+- Build API endpoints with FastAPI as needed
+- Disadvantage: authentication may be complex
+
+## Example: Fetching Data from FastAPI
+
+TODO: extend example with 
+
+```python
+
+```
+
+## Design Patterns
+
+- Pure client-side: when datasets are small, apps are simple
+- Hybrid mode: add backend for auth, heavy compute, or write access
+- Modularize: keep server-side optional and stateless
+- Use reactive patterns to simplify UI logic
+
+## Limitations to Be Aware Of
+
+- Bundle size (e.g., Pyodide ~14MB, Numpy ~8MB, Pandas ~13MB)
+- Initial loading time (but caching helps)
+- Limited packages (pure Python, no C extensions unless Wasm compiled)
+- Browser memory & performance constraints
+
+## When to Use This Stack
+
+✅ Great for:
+
+- Dashboards, small data apps
+- Education / demos / data exploration
+- Lightweight deployments (e.g. GitHub Pages)
+
+🚫 Not ideal for:
+
+- Real-time streaming or huge datasets
+- Complex authentication or role-based access control
+
+## Recap
+
+- Wasm + Shinylive opens new doors for Python in the browser
+- Fully reactive apps without JavaScript or explicit callbacks
+- Efficient local data access via Parquet
+- Optional FastAPI services for hybrid models
+
+## Thank You / Q&A
+
+- Questions?
+- QR code for repo with slides & example repo
+- QR code for LinkedIn
+
+## Resources
+
+- WebAssembly: [webassembly.org](https://webassembly.org/)
+- ShinlLive: [shiny.posit.co/py/get-started/shinylive](https://shiny.posit.co/py/get-started/shinylive.html)
+- Pyodide: [pyodide.org](https://pyodide.org/)
+- Apache Parquet: [parquet.apache.org](https://parquet.apache.org/)
+- FastAPI: [fastapi.tiangolo.com](https://fastapi.tiangolo.com/)
+- Repo: [christophscheuch/pydata-berlin-2025](https://www.github.com/christophscheuch/pydata-berlin-2025)

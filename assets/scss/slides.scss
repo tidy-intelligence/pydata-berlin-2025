@@ -1,0 +1,91 @@
+/*-- scss:defaults --*/
+
+// fonts
+$font-family-sans-serif: 'Source Sans Pro', sans-serif !default;
+$presentation-heading-font: 'Montserrat', sans-serif !default;
+
+// colors
+$body-bg: #fdfefe !default;
+$body-color: #000 !default;
+$link-color: #333333 !default;
+$selection-bg: #333333 !default;
+
+/*-- scss:rules --*/
+
+.reveal a {
+  line-height: 1.2em;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/*-- font sizes --*/
+.reveal h1 {
+  font-size: 1.8em;
+  text-align: left;
+  padding-bottom: 80px;
+}
+
+.reveal .quarto-title-block .quarto-title-authors {
+  justify-content: flex-start;
+}
+
+.reveal .quarto-title-block .quarto-title-authors .quarto-title-author {
+  text-align: left;
+  padding-left: 0em;
+  padding-right: 0em;
+  font-weight: bold;
+}
+
+.reveal h2 {
+  font-size: 1.1em;
+}
+
+.reveal p {
+  font-size: 0.8em;
+}
+
+.reveal ul {
+  font-size: 0.8em;
+}
+
+.reveal ol {
+  font-size: 0.8em;
+}
+
+.caption-top {
+  font-size:0.8em;
+}
+
+.reveal code {
+  font-size: 0.8em;
+}
+
+#references {
+  h2 {
+    font-size: 1.7em;
+  }
+}
+
+/*-- spacings --*/
+
+.mermaid {
+  width: 100%;
+}
+
+/* -- alignment --*/
+.caption{
+   text-align: center;
+}
+
+.slide figure>figcaption {
+  text-align: center;
+}
+
+.slide-number a {
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.reveal ol, .reveal dl, .reveal ul {
+  font-size: 0.8em;
+}
