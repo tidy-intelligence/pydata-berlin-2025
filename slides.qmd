@@ -67,6 +67,7 @@ from shiny import App, render, ui
 app_ui = ui.page_sidebar(
     ui.sidebar(ui.input_slider("n", "N", min=0, max=100, value=20)),
     ui.output_plot("histogram"),
+    title="Hello, PyData Berlin!",
 )
 
 
@@ -99,9 +100,13 @@ docs
     └── pyodide       # Pyodide files
 ```
 
-## Deploying the Shinylive App
+## Deploying the Shinylive app via GitHub Pages
 
-TODO: provide simplified example for GitHub pages
+![](assets/img/github-pages-deployment.png)
+
+## Testing the deployed app
+
+![[tidy-intelligence.github.io/pydata-berlin-2025](https://shiny.posit.co/py/get-started/shinylive.html)](assets/img/qr-code-deployed-app.png)
 
 ## Shipping Data
 

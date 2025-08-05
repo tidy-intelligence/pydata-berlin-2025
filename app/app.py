@@ -6,6 +6,7 @@ from shiny import App, render, ui
 app_ui = ui.page_sidebar(
     ui.sidebar(ui.input_slider("n", "N", min=0, max=100, value=20)),
     ui.output_plot("histogram"),
+    title="Hello, PyData Berlin!",
 )
 
 
