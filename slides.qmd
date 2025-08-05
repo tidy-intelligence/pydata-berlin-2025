@@ -108,7 +108,7 @@ docs
 
 ![[tidy-intelligence.github.io/pydata-berlin-2025](https://shiny.posit.co/py/get-started/shinylive.html)](assets/img/qr-code-deployed-app.png)
 
-## Shipping Data
+## Shipping Data with Parquet
 
 - Parquet = efficient, compressed columnar data format
 - Can be read in-browser using PyArrow (in Pyodide)
@@ -140,25 +140,27 @@ TODO: extend example with
 
 ## Design Patterns
 
-- Pure client-side: when datasets are small, apps are simple
-- Hybrid mode: add backend for auth, heavy compute, or write access
-- Modularize: keep server-side optional and stateless
-- Use reactive patterns to simplify UI logic
+- **Pure client-side**: when datasets are small, apps are simple
+- **Hybrid mode**: add backend for auth, heavy compute, or write access
+- **Modularize**: keep server-side optional and stateless
+- Use **reactive patterns** to simplify UI logic
 
 ## Limitations to Be Aware Of
 
-- Bundle size (e.g., Pyodide ~14MB, Numpy ~8MB, Pandas ~13MB)
-- Initial loading time (but caching helps)
-- Limited packages (pure Python, no C extensions unless Wasm compiled)
-- Browser memory & performance constraints
+- **Bundle size** (e.g., Pyodide ~14MB, Numpy ~8MB, Pandas ~13MB)
+- Initial **loading time** (but caching helps)
+- **Limited packages** (pure Python, no C extensions unless Wasm compiled)
+- Browser **memory & performance** constraints
 
 ## When to Use This Stack
 
 ✅ Great for:
 
-- Dashboards, small data apps
+- Dashboards, small data apps (potentially behind firewalls)
 - Education / demos / data exploration
 - Lightweight deployments (e.g. GitHub Pages)
+
+<br>
 
 🚫 Not ideal for:
 
@@ -167,16 +169,24 @@ TODO: extend example with
 
 ## Recap
 
-- Wasm + Shinylive opens new doors for Python in the browser
-- Fully reactive apps without JavaScript or explicit callbacks
-- Efficient local data access via Parquet
-- Optional FastAPI services for hybrid models
+- Wasm + Shinylive opens new doors for **Python in the browser**
+- **Fully reactive apps** without JavaScript or explicit callbacks
+- Efficient **local data** access via **Parquet**
+- **Optional FastAPI** services for hybrid models
 
-## Thank You / Q&A
+## Thank You 🙏
 
-- Questions?
-- QR code for repo with slides & example repo
-- QR code for LinkedIn
+:::: {.columns}
+
+::: {.column width="50%"}
+![[Follow on LinkedIn](https://www.linkedin.com/in/christophscheuch/)](assets/img/qr-code-linkedin.png)
+:::
+
+::: {.column width="50%"}
+![GitHub Repo](assets/img/qr-code-repo.png)
+:::
+
+::::
 
 ## Resources
 
