@@ -13,15 +13,17 @@ format:
 
 ## Problems of Python web apps
 
-- Traditional Python web apps rely on:
+- **Traditional web apps** rely on:
   - Server backend (Flask, Django, FastAPI)
   - Frontend in JavaScript or Python frameworks (e.g., Streamlit, Dash)
-- Complex state management & data caching
-- Deployment complexity
+- Complex **state management** & data caching
+- Potential **deployment** complexity
 
-## Why WebAssembly (Wasm)?
+## Enter WebAssembly (Wasm)
 
-> Wasm a binary instruction format for a stack-based virtual machine
+> A binary instruction format for a stack-based virtual machine
+
+. . .
 
 <br>
 
@@ -36,9 +38,11 @@ What does this mean?
 
 **Shiny**: reactive data apps in pure Python
     
-- No manual state management (e.g. callback functions)
+- No manual state management (e.g., callback functions)
 - Automatic reactive execution engine
 - Full support for CSS & JavaScrip customization
+
+. . .
 
 <br>
 
@@ -46,27 +50,47 @@ What does this mean?
 
 ## Traditional Shiny deployment
 
-TODO: insert figure from shinylive website
+![[shiny.posit.co](https://shiny.posit.co/py/get-started/shinylive.html)](assets/img/traditional-shiny-deployment.png)
 
 ## Shinylive deployment
 
-TODO: insert figure from shinylive website
+![[shiny.posit.co](https://shiny.posit.co/py/get-started/shinylive.html)](assets/img/shinylive-deployment.png)
 
 ## Example: a simple data app in Shiny
 
-TODO: include simple app that displays data
+```{.python}
+import matplotlib.pyplot as plt
+import numpy as np
+from shiny import App, render, ui
 
-```python
+# Define the UI
+app_ui = ui.page_sidebar(
+    ui.sidebar(ui.input_slider("n", "N", min=0, max=100, value=20)),
+    ui.output_plot("histogram"),
+)
 
+
+# Define the server logic
+def server(input, output, session):
+    @output
+    @render.plot
+    def histogram():
+        np.random.seed(1234)
+        x = 100 + 15 * np.random.randn(437)
+        plt.hist(x, bins=input.n(), density=True)
+
+
+# Create the Shiny app
+app = App(app_ui, server)
 ```
 
 ## Building the Shinylive App
 
-`shinylive export hello-world docs`
+`shinylive export app docs`
 
 ```
 docs
-├── app.json          # The application's files serialized to JSON
+├── app.json          # The app's files serialized to JSON
 ├── index.html        # A web page for the application
 ├── edit
 │   └── index.html    # A web page for an editor view of the application
