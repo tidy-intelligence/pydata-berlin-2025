@@ -58,7 +58,7 @@ What does this mean?
 
 ## Example: a simple data app in Shiny
 
-```{.python}
+```{.python code-line-numbers="|1-3|5-6|7|8|9|13-14|15-16|17-20|23-24"}
 import matplotlib.pyplot as plt
 import numpy as np
 from shiny import App, render, ui
@@ -85,11 +85,15 @@ def server(input, output, session):
 app = App(app_ui, server)
 ```
 
-## Building the Shinylive App
+## Building the Shinylive app
 
-`shinylive export app docs`
+Run `shinylive export app docs` in terminal
 
-```
+. . .
+
+<br>
+
+```{.files code-line-numbers=|1|2|3|4-5|6|7-8}
 docs
 ├── app.json          # The app's files serialized to JSON
 ├── index.html        # A web page for the application
@@ -100,49 +104,76 @@ docs
     └── pyodide       # Pyodide files
 ```
 
-## Deploying the Shinylive app via GitHub Pages
+## Script is encoded in `app.json`
 
-![](assets/img/github-pages-deployment.png)
+![](assets/img/screenshot-app.png)
+
+## Deploying Shinylive apps as static pages
+
+![[How-To by Rami Krispin](https://github.com/RamiKrispin/shinylive?tab=readme-ov-file#deploy-shinylive-app-on-github-pages)](assets/img/github-pages.jpg)
 
 ## Testing the deployed app
 
-![[tidy-intelligence.github.io/pydata-berlin-2025](https://shiny.posit.co/py/get-started/shinylive.html)](assets/img/qr-code-deployed-app.png)
+![[tidy-intelligence.github.io/pydata-berlin-2025](https://tidy-intelligence.github.io/pydata-berlin-2025)](assets/img/qr-code-deployed-app.png)
 
 ## Shipping Data with Parquet
 
-- Parquet = efficient, compressed columnar data format
-- Can be read in-browser using PyArrow (in Pyodide)
-- Ideal for small to medium-sized datasets & offline-first apps
-- Disadvantage: (potentially public) static data
+- **Parquet** = efficient, compressed columnar data format
+- Can be read **in-browser** using PyArrow / Polars
+- Ideal for **small to medium-sized** datasets & offline-first apps
+- Disadvantage: (potentially public) **static data**
 
-## Example: Reading Parquet Files
-
-TODO: update example to load parquet data
+## Example: reading Parquet files
 
 ```python
+import matplotlib.pyplot as plt
+
+# Import polars to load Parquet
+import polars as pl
+from shiny import App, render, ui
+
+df = pl.read_parquet("app-parquet/data.parquet")
+
+app_ui = ui.page_sidebar(
+    ui.sidebar(ui.input_slider("n", "N", min=0, max=100, value=20)),
+    ui.output_plot("histogram"),
+    title="Hello, PyData Berlin!",
+)
+
+
+def server(input, output, session):
+    @output
+    @render.plot
+    def histogram():
+        # Use data frame instead of generated values
+        data = df["values"].to_numpy()
+        plt.hist(data, bins=input.n(), density=True)
+
+
+app = App(app_ui, server)
 
 ```
+
+## Files are also encoded in `app.json`
+
+![](assets/img/screenshot-parquet.png)
 
 ## Optional Backend with FastAPI
 
-- Offload compute or storage tasks to dedicated server
-- Handle authentication, remote database access, heavy lifting
-- Build API endpoints with FastAPI as needed
-- Disadvantage: authentication may be complex
+- Offload **compute** or **storage** tasks to dedicated server
+- Handle **authentication**, remote database access, heavy lifting
+- Build API endpoints with **FastAPI** as needed
+- Disadvantage: authentication may be **complex**
 
 ## Example: Fetching Data from FastAPI
 
-TODO: extend example with 
-
-```python
-
-```
+![](assets/img/fast-api-example.png)
 
 ## Design Patterns
 
 - **Pure client-side**: when datasets are small, apps are simple
 - **Hybrid mode**: add backend for auth, heavy compute, or write access
-- **Modularize**: keep server-side optional and stateless
+- **Modularize**: keep server-side optional & stateless
 - Use **reactive patterns** to simplify UI logic
 
 ## Limitations to Be Aware Of
@@ -154,7 +185,7 @@ TODO: extend example with
 
 ## When to Use This Stack
 
-✅ Great for:
+✅ **Great for**:
 
 - Dashboards, small data apps (potentially behind firewalls)
 - Education / demos / data exploration
@@ -162,7 +193,9 @@ TODO: extend example with
 
 <br>
 
-🚫 Not ideal for:
+. . .
+
+🚫 **Not ideal for**:
 
 - Real-time streaming or huge datasets
 - Complex authentication or role-based access control
@@ -183,7 +216,7 @@ TODO: extend example with
 :::
 
 ::: {.column width="50%"}
-![GitHub Repo](assets/img/qr-code-repo.png)
+![[GitHub Repo](https://github.com/tidy-intelligence/pydata-berlin-2025)](assets/img/qr-code-repo.png)
 :::
 
 ::::

@@ -1,1 +1,7 @@
-[{"name": "app.py", "content": "import matplotlib.pyplot as plt\nimport numpy as np\nfrom shiny import App, render, ui\n\n# Define the UI\napp_ui = ui.page_sidebar(\n    ui.sidebar(ui.input_slider(\"n\", \"N\", min=0, max=100, value=20)),\n    ui.output_plot(\"histogram\"),\n)\n\n\n# Define the server logic\ndef server(input, output, session):\n    @output\n    @render.plot\n    def histogram():\n        np.random.seed(1234)\n        x = 100 + 15 * np.random.randn(437)\n        plt.hist(x, bins=input.n(), density=True)\n\n\n# Create the Shiny app\napp = App(app_ui, server)\n", "type": "text"}]
+[
+    {
+        "name": "app.py",
+        "content": "import matplotlib.pyplot as plt\nimport numpy as np\nfrom shiny import App, render, ui\n\n# Define the UI\napp_ui = ui.page_sidebar(\n    ui.sidebar(ui.input_slider(\"n\", \"N\", min=0, max=100, value=20)),\n    ui.output_plot(\"histogram\"),\n)\n\n\n# Define the server logic\ndef server(input, output, session):\n    @output\n    @render.plot\n    def histogram():\n        np.random.seed(1234)\n        x = 100 + 15 * np.random.randn(437)\n        plt.hist(x, bins=input.n(), density=True)\n\n\n# Create the Shiny app\napp = App(app_ui, server)\n",
+        "type": "text"
+    }
+]
