@@ -224,8 +224,8 @@ app = App(app_ui, server)
 ## Resources
 
 - WebAssembly: [webassembly.org](https://webassembly.org/)
-- ShinlLive: [shiny.posit.co/py/get-started/shinylive](https://shiny.posit.co/py/get-started/shinylive.html)
+- Shinylive: [shiny.posit.co/py/get-started/shinylive](https://shiny.posit.co/py/get-started/shinylive.html)
 - Pyodide: [pyodide.org](https://pyodide.org/)
 - Apache Parquet: [parquet.apache.org](https://parquet.apache.org/)
 - FastAPI: [fastapi.tiangolo.com](https://fastapi.tiangolo.com/)
-- Repo: [christophscheuch/pydata-berlin-2025](https://www.github.com/christophscheuch/pydata-berlin-2025)
+- Repo: [tidy-intelligence/pydata-berlin-2025](https://www.github.com/tidy-intelligence/pydata-berlin-2025)
