@@ -36,7 +36,7 @@ What does this mean?
 
 ## Enter Shiny & Shinylive
 
-**Shiny**: reactive data apps in pure Python
+**Shiny**: reactive data apps in *pure Python*
     
 - No manual state management (e.g., callback functions)
 - Automatic reactive execution engine
@@ -47,6 +47,8 @@ What does this mean?
 <br>
 
 **Shinylive**: run Shiny apps entirely in the browser 
+
+- Built on *Pyodide* (= port of CPython to Wasm)
 
 ## Traditional Shiny deployment
 
@@ -125,7 +127,7 @@ docs
 
 ## Example: reading Parquet files
 
-```python
+```{.python code-line-numbers="|3-5|7|20-21"}
 import matplotlib.pyplot as plt
 
 # Import polars to load Parquet
@@ -178,7 +180,7 @@ app = App(app_ui, server)
 
 ## Limitations to Be Aware Of
 
-- **Bundle size** (e.g., Pyodide ~14MB, Numpy ~8MB, Pandas ~13MB)
+- **Bundle size** (e.g., Pyodide ~3MB, Numpy ~2.5MB, Pandas ~4.1MB)
 - Initial **loading time** (but caching helps)
 - **Limited packages** (pure Python, no C extensions unless Wasm compiled)
 - Browser **memory & performance** constraints
@@ -189,7 +191,7 @@ app = App(app_ui, server)
 
 - Dashboards, small data apps (potentially behind firewalls)
 - Education / demos / data exploration
-- Lightweight deployments (e.g. GitHub Pages)
+- Lightweight deployments (e.g., GitHub Pages)
 
 <br>
 
@@ -200,7 +202,7 @@ app = App(app_ui, server)
 - Real-time streaming or huge datasets
 - Complex authentication or role-based access control
 
-## Recap
+## Key takeaways
 
 - Wasm + Shinylive opens new doors for **Python in the browser**
 - **Fully reactive apps** without JavaScript or explicit callbacks
@@ -211,11 +213,15 @@ app = App(app_ui, server)
 
 :::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="40%"}
 ![[Follow on LinkedIn](https://www.linkedin.com/in/christophscheuch/)](assets/img/qr-code-linkedin.png)
 :::
 
-::: {.column width="50%"}
+::: {.column width="20%"}
+
+:::
+
+::: {.column width="40%"}
 ![[GitHub Repo](https://github.com/tidy-intelligence/pydata-berlin-2025)](assets/img/qr-code-repo.png)
 :::
 
