@@ -11,7 +11,7 @@ format:
     theme: assets/scss/slides.scss
 ---
 
-## Problems of Python web apps
+## Pain points of Python web apps
 
 - **Traditional web apps** rely on:
   - Server backend (Flask, Django, FastAPI)
@@ -118,21 +118,21 @@ docs
 
 ![[tidy-intelligence.github.io/pydata-berlin-2025](https://tidy-intelligence.github.io/pydata-berlin-2025)](assets/img/qr-code-deployed-app.png)
 
-## Shipping Data with Parquet
+## Shipping data with Parquet
 
 - **Parquet** = efficient, compressed columnar data format
 - Can be read **in-browser** using PyArrow / Polars
-- Ideal for **small to medium-sized** datasets & offline-first apps
+- Ideal for **small datasets** & offline-first apps
 - Disadvantage: (potentially public) **static data**
 
 ## Example: reading Parquet files
 
 ```{.python code-line-numbers="|3-5|7|20-21"}
 import matplotlib.pyplot as plt
+from shiny import App, render, ui
 
 # Import polars to load Parquet
 import polars as pl
-from shiny import App, render, ui
 
 df = pl.read_parquet("app-parquet/data.parquet")
 
@@ -160,32 +160,32 @@ app = App(app_ui, server)
 
 ![](assets/img/screenshot-parquet.png)
 
-## Optional Backend with FastAPI
+## Optional backend with FastAPI
 
 - Offload **compute** or **storage** tasks to dedicated server
 - Handle **authentication**, remote database access, heavy lifting
 - Build API endpoints with **FastAPI** as needed
 - Disadvantage: authentication may be **complex**
 
-## Example: Fetching Data from FastAPI
+## Example: complex auth & data backend
 
 ![](assets/img/fast-api-example.png)
 
-## Design Patterns
+## Design patterns
 
 - **Pure client-side**: when datasets are small, apps are simple
 - **Hybrid mode**: add backend for auth, heavy compute, or write access
-- **Modularize**: keep server-side optional & stateless
-- Use **reactive patterns** to simplify UI logic
+- **Modularize**: keep server logic stateless
+- Use **reactivivty** to simplify UI logic
 
-## Limitations to Be Aware Of
+## Limitations to be aware of
 
 - **Bundle size** (e.g., Pyodide ~3MB, Numpy ~2.5MB, Pandas ~4.1MB)
 - Initial **loading time** (but caching helps)
 - **Limited packages** (pure Python, no C extensions unless Wasm compiled)
 - Browser **memory & performance** constraints
 
-## When to Use This Stack
+## When to use this stack
 
 ✅ **Great for**:
 

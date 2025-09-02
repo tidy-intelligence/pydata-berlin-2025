@@ -3,6 +3,7 @@
 This repo contains the materials for the talk 'Building Reactive Data Apps with Shinylive and WebAssembly' at [PyData Berlin 2025](https://cfp.pydata.org/berlin2025/talk/GPZPFP/).
 
 - Follow me on [LinkedIn](https://www.linkedin.com/in/christophscheuch/)
+- Link to [example app](https://tidy-intelligence.github.io/pydata-berlin-2025/) deployed via GitHub Pages
 
 ## Talk Summary
 
